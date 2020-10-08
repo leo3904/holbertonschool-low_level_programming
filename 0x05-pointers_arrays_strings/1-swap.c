@@ -1,5 +1,5 @@
 
-#include "coding.h"
+#include "holberton.h"
 
 /**
  * swap_int - function with two int type pointer argument
