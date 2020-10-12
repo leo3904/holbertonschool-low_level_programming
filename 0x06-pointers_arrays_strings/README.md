@@ -1,0 +1,1 @@
+This is the project 0X06 about arrays, pointers and strings.
