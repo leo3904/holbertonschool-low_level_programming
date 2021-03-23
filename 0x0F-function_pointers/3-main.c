@@ -1,51 +1,45 @@
 #include <stdio.h>
-#include "function_pointers.h"
 #include <stdlib.h>
-#include <string.h>
+#include "3-calc.h"
 
 /**
- * main - check the program
- * @argc: arguments cant
- * @argv: vector arguments
- * Return: 0 if false, something else otherwise.
+ * main - function
+ * @argc: number of arguments
+ * @argv: array of arguments
+ *
+ * Return: value found using correct function (sum, etc)
  */
+
 int main(int argc, char *argv[])
 {
-	int (*get)(int, int);
-	int a, b, operator;
-
+	int (*f)(int, int);
+	int num;
+	int a, b;
 
 	if (argc != 4)
 	{
 		printf("Error\n");
 		exit(98);
 	}
-	if (strlen(argv[2]) != 1)
+
+	a = atoi(argv[1]);
+	b = atoi(argv[3]);
+	f = get_op_func(argv[2]);
+
+	if (f == NULL)
 	{
-		printf("Error\n");
-		exit(99);
-	}
-	operator = argv[2][0];
-	switch (operator)
-	{
-	case '+':
-		break;
-	case '-':
-		break;
-	case '*':
-		break;
-	case '/':
-		break;
-	case '%':
-		break;
-	default:
 		printf("Error\n");
 		exit(99);
 	}
 
-	a = atoi(argv[1]);
-	b = atoi(argv[3]);
-	get = get_op_func(argv[2]);
-	printf("%d\n", get(a, b));
+	if ((argv[2][0] == '/' || argv[2][0] == '%') && b == 0)
+	{
+		printf("Error\n");
+		exit(100);
+	}
+
+	num = f(a, b);
+	printf("%d\n", num);
+
 	return (0);
 }
