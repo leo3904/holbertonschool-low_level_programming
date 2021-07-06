@@ -1,14 +1,31 @@
-CC = gcc
-SRC = main.c holberton.c
-OBJ = $(SRC:.c=.o)
-NAME = holberton
-RM = rm -f
-CFLAGS = -Wall -Werror -Wextra -pedantic
-all: $(OBJ)
-	$(CC) $(OBJ) -o $(NAME)
-clean:
-	$(RM) *~ $(NAME)
-oclean:
-	$(RM) $(OBJ)
-fclean: clean oclean
-re: oclean all
+NAME		=	holberton
+#***************** SRC ********************#
+
+SRC			=	main.c holberton.c
+
+#***************** DEPS *******************#
+
+CC			=	gcc
+CFLAGS		=	-Wall -Werror -Wextra -pedantic
+RM			=	rm -f
+
+#************************ DEPS COMPILATION *************************
+
+OBJ = $(SRC:%.c=%.o)
+
+#************************ MAIN COMPILATION *************************
+
+all		:		$(OBJ)
+				$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
+
+clean	:
+				$(RM) *~ $(NAME)
+
+oclean	:
+				$(RM) $(OBJ)
+
+fclean	:
+				$(RM) *~ $(NAME)
+				$(RM) $(OBJ)
+
+re		:		oclean all
