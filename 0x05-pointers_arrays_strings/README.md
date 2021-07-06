@@ -1,1 +1,0 @@
-This is the project 0x05 about pointers, strings and arrays.

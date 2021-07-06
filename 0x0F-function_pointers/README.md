@@ -1,1 +1,0 @@
-This is the function pointers project in low-level programing 

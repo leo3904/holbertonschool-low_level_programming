@@ -1,1 +1,0 @@
-This is the Double linked list project

@@ -1,1 +1,0 @@
-This is the project number 0X07 about more arrays, pointers and strings

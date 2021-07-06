@@ -1,1 +1,0 @@
-This is the preprocessor project in low-level programming
