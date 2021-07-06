@@ -1,47 +1,44 @@
-#include <limits.h>
-#include <math.h>
 #include <stdio.h>
 
 /**
- * main - entry point
- *
- * Return: Always 0.
- */
+*main - program that prints the first 98 numbers of fibonacci
+*
+*Return: Always 0
+*/
 int main(void)
 {
 	int i;
-	int j;
-	long a_lo = 1;
-	long b_lo = 2;
-	long a_hi = 0;
-	long b_hi = 0;
-	int limit_len = floor(log10(LONG_MAX / 2));
-	long limit = pow(10, limit_len);
 
-	for (i = 0; i < 98; ++i)
+	unsigned long int n1, n2, n3;
+	unsigned long int d1, d3, r1, r2;
+
+	r1 = 0;
+	r2 = 0;
+	n1 = 1;
+	n2 = 2;
+	printf("%lu, ", n1);
+	printf("%lu, ", n2);
+	for (i = 3; i <= 98; i++)
 	{
-		if (a_hi)
+		if ((n1 + n2 > 10000000000) || r2 > 0 || r1 > 0)
 		{
-			printf("%ld", a_hi);
-			for (j = floor(log10(a_lo)) + 1; j < limit_len; ++j)
-				putchar('0');
+			d1 = (n1 + n2) / 10000000000;
+			n3 = (n1 + n2) % 10000000000;
+			d3 = r1 + r2 + d1;
+			r1 = r2, r2 = d3;
+			n1 = n2, n2 = n3;
+			printf("%lu%010lu", r2, n2);
 		}
-		printf("%ld", a_lo);
-		b_lo = b_lo + a_lo;
-		a_lo = b_lo - a_lo;
-		a_hi = b_hi - a_hi;
-		b_hi = b_hi + a_hi;
-		if (b_lo >= limit)
+		else
 		{
-			b_hi += b_lo / limit;
-			b_lo %= limit;
-			a_hi += a_lo / limit;
-			a_lo %= limit;
+			n3 = n1 + n2;
+			printf("%lu", n3);
+			n1 = n2;
+			n2 = n3;
 		}
-		if (i < 97)
+		if (i != 98)
 			printf(", ");
 	}
-	putchar('\n');
-
+	printf("\n");
 	return (0);
 }
