@@ -1,65 +1,26 @@
-#include "operations.h"
+#include <stdio.h>
 
-/**
- * add - add two numbers
- * @a: the 1st number
- * @b: the 2nd number
- *
- * Return: the sum of a and b
- */
-int add(int a, int b)
+int add(int n1, int n2)
 {
-	return (a + b);
+  return (n1 + n2);
 }
 
-
-/**
- * sub - subtract two numbers
- * @a: the 1st number
- * @b: the 2nd number
- *
- * Return: the difference of a and b
- */
-int sub(int a, int b)
+int sub(int n1, int n2)
 {
-	return (a - b);
+  return (n1 - n2);
 }
 
-
-/**
- * mul - multiply two numbers
- * @a: the 1st number
- * @b: the 2nd number
- *
- * Return: the product of a and b
- */
-int mul(int a, int b)
+int mul(int n1, int n2)
 {
-	return (a * b);
+  return (n1 * n2);
 }
 
-
-/**
- * div - divide two numbers
- * @a: the 1st number
- * @b: the 2nd number
- *
- * Return: the quotient of a and b
- */
-int div(int a, int b)
+int div(int n1, int n2)
 {
-	return (a / b);
+  return (n1 / n2);
 }
 
-
-/**
- * mod - mod two numbers
- * @a: the 1st number
- * @b: the 2nd number
- *
- * Return: the modulo of a and b
- */
-int mod(int a, int b)
+int mod(int n1, int n2)
 {
-	return (a % b);
+  return (n1 % n2);
 }
