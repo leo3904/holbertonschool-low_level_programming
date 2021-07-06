@@ -1,42 +1,40 @@
 #include "lists.h"
+
 /**
- * delete_nodeint_at_index - Entry Point
- * @head: head
- * @index: index
- * Return: 0
+ * delete_nodeint_at_index - fx that erase the node of index
+ * @head: pointer to the head of LL
+ * @index: index of node to erase
+ * Return: 1 if it is founded , -1: error
  */
 int delete_nodeint_at_index(listint_t **head, unsigned int index)
 {
-	unsigned int count = 0;
+	unsigned int counter = 0;
+	listint_t *prev_node, *tmp_head;
 
-	listint_t *copy;
-	listint_t *temp;
-
-	if (*head == NULL)
+	if (*head == NULL || head == NULL)
 		return (-1);
-
-	copy = *head;
-
+	/* case when we want to delete the first node */
 	if (index == 0)
 	{
-		temp = copy->next;
-		free(copy);
-		*head = temp;
+		tmp_head = (*head)->next;
+		free(*head);
+		*head = tmp_head;
 		return (1);
 	}
-
-	while (copy != NULL)
+	/* in the next case, we need to create 2 tmp nodes */
+	/* one for run over the LL (tmp_head); other: prev_node */
+	tmp_head = *head;
+	while (tmp_head)
 	{
-		if (count + 1 == index)
+		if (counter == index)
 		{
-			temp = copy->next;
-			copy->next = temp->next;
-			free(temp);
+			prev_node->next = (tmp_head->next);
+			free(tmp_head);
 			return (1);
 		}
-		if (copy->next != NULL)
-			copy = copy->next;
-		count++;
+		prev_node = tmp_head;
+		tmp_head = tmp_head->next;
+		counter++;
 	}
 	return (-1);
 }
